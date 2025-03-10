@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import plotly.express as px
+import plotly.graph_objects as go
 
 # Title of the app
 st.title("mzQC File Visualizer")
@@ -32,12 +33,53 @@ if uploaded_file:
             metric_name = metric["name"]
             metric_value = metric["value"]
 
-            # Choose plot type based on metric properties
+            # Handle numeric metrics
             if isinstance(metric_value, (int, float)):
-                # Create a bar plot for numeric metrics
-                fig = px.bar(x=[metric_name], y=[metric_value], labels={"x": "Metric", "y": "Value"})
+                st.write(f"#### {metric_name}")
+                # Use a colorful bar chart
+                fig = px.bar(
+                    x=[metric_name],
+                    y=[metric_value],
+                    labels={"x": "Metric", "y": "Value"},
+                    color=[metric_name],
+                    color_discrete_sequence=px.colors.qualitative.Plotly
+                )
                 st.plotly_chart(fig)
+
+            # Handle list-based metrics
             elif isinstance(metric_value, list):
-                # Create a line plot for list-based metrics
-                fig = px.line(y=metric_value, labels={"y": "Value"})
+                st.write(f"#### {metric_name}")
+                if all(isinstance(item, (int, float)) for item in metric_value):
+                    # Use a colorful line chart
+                    fig = px.line(
+                        y=metric_value,
+                        labels={"y": "Value"},
+                        color_discrete_sequence=px.colors.qualitative.Vivid
+                    )
+                    st.plotly_chart(fig)
+                elif all(isinstance(item, dict) for item in metric_value):
+                    # Use a scatter plot for list of objects
+                    df = pd.DataFrame(metric_value)
+                    fig = px.scatter(
+                        df,
+                        x=df.columns[0],
+                        y=df.columns[1],
+                        color=df.columns[1],
+                        color_continuous_scale=px.colors.sequential.Viridis
+                    )
+                    st.plotly_chart(fig)
+
+            # Handle nested objects
+            elif isinstance(metric_value, dict):
+                st.write(f"#### {metric_name}")
+                df = pd.DataFrame.from_dict(metric_value, orient="index", columns=["Value"])
+                # Use a colorful bar chart for nested objects
+                fig = px.bar(
+                    df,
+                    x=df.index,
+                    y="Value",
+                    labels={"x": "Key", "y": "Value"},
+                    color=df.index,
+                    color_discrete_sequence=px.colors.qualitative.Pastel
+                )
                 st.plotly_chart(fig)
