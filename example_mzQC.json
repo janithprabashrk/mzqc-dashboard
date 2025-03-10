@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "creationDate": "2023-10-01",
+    "version": "1.0.0",
+    "description": "Example mzQC file for testing purposes.",
+    "instrumentModel": "Orbitrap Fusion",
+    "softwareVersion": "Proteome Discoverer 2.5",
+    "contactName": "John Doe",
+    "contactOrganization": "Mass Spec Lab"
+  },
+  "sampleInfo": {
+    "sampleId": "SAMPLE-001",
+    "organism": "Homo sapiens",
+    "cellLine": "HEK293",
+    "collectionDate": "2023-09-25"
+  },
+  "qualityMetrics": [
+    {
+      "name": "Total Ion Current",
+      "value": 123456.78,
+      "description": "Total ion current across the run.",
+      "unit": "counts",
+      "category": "signal"
+    },
+    {
+      "name": "Peak Intensity",
+      "value": [100, 200, 300, 400, 500],
+      "description": "Intensity values for the top 5 peaks.",
+      "unit": "counts",
+      "category": "signal"
+    },
+    {
+      "name": "Retention Time Shift",
+      "value": 1.23,
+      "description": "Average retention time shift in minutes.",
+      "unit": "minutes",
+      "category": "chromatography"
+    },
+    {
+      "name": "MS2 Spectra Count",
+      "value": 1500,
+      "description": "Number of MS2 spectra acquired.",
+      "unit": "count",
+      "category": "acquisition"
+    },
+    {
+      "name": "Mass Accuracy",
+      "value": 2.5,
+      "description": "Average mass error.",
+      "unit": "ppm",
+      "category": "mass"
+    },
+    {
+      "name": "Chromatographic Peak Width",
+      "value": 0.35,
+      "description": "Average chromatographic peak width at half height.",
+      "unit": "minutes",
+      "category": "chromatography"
+    },
+    {
+      "name": "Signal to Noise Ratio",
+      "value": 45.2,
+      "description": "Average signal to noise ratio for detected peptides.",
+      "unit": "ratio",
+      "category": "signal"
+    },
+    {
+      "name": "Protein Sequence Coverage",
+      "value": {
+        "P01308": 75.2,
+        "P01009": 65.8,
+        "P02768": 80.1
+      },
+      "description": "Protein sequence coverage per accession.",
+      "unit": "percentage",
+      "category": "identification"
+    },
+    {
+      "name": "Retention Time Stability",
+      "value": [
+        {"rt": 10.5, "deviation": 0.05},
+        {"rt": 20.3, "deviation": 0.08},
+        {"rt": 30.7, "deviation": 0.12}
+      ],
+      "description": "RT deviation across multiple time points.",
+      "unit": "minutes",
+      "category": "chromatography"
+    },
+    {
+      "name": "Missed Cleavages",
+      "value": {
+        "0": 1250,
+        "1": 325,
+        "2": 45
+      },
+      "description": "Distribution of missed cleavages.",
+      "unit": "count",
+      "category": "sample preparation"
+    }
+  ],
+  "runSummary": {
+    "startTime": "2023-09-30T08:15:00Z",
+    "endTime": "2023-09-30T10:45:00Z",
+    "successfulRun": true,
+    "statusMessage": "Run completed successfully",
+    "totalPeptides": 3245,
+    "totalProteins": 1502
+  }
+}
