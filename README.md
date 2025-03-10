@@ -76,6 +76,11 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any questions or inquiries, please contact Janith Prabash R.K. at janithprabash944ugc@gmail.com
 
+## Live Demo
+
+You can access the live demo of the mzQC Dashboard at the following link:
+[https://mzqc-dashboard-by-janith-prabash-3ddebeaawhqfz88w8qgxan.streamlit.app/](https://mzqc-dashboard-by-janith-prabash-3ddebeaawhqfz88w8qgxan.streamlit.app/)
+
 ---
 
 <div style="text-align: center">
