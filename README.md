@@ -74,7 +74,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or inquiries, please contact Janith Prabash R.K. at [your-email@example.com].
+For any questions or inquiries, please contact Janith Prabash R.K. at janithprabash944ugc@gmail.com
 
 ---
 
