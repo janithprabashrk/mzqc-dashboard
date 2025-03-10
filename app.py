@@ -1,11 +1,17 @@
 import streamlit as st
 import pandas as pd
 import json
-import plotly.express as px
-import plotly.graph_objects as go
 import numpy as np
 from datetime import datetime
 import re
+
+# Try importing Plotly with explicit error handling
+try:
+    import plotly.express as px
+    import plotly.graph_objects as go
+except ImportError:
+    st.error("Failed to import Plotly. Please make sure it's installed.")
+    st.stop()
 
 # Try importing statsmodels, but continue if not available
 try:
@@ -13,6 +19,7 @@ try:
     HAS_STATSMODELS = True
 except ImportError:
     HAS_STATSMODELS = False
+    st.warning("Statsmodels is not installed. Some trend line features will be disabled.")
 
 # Set page configuration
 st.set_page_config(
